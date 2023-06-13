@@ -1,0 +1,67 @@
+create database estoqueDupla;
+use estoqueDupla;
+create table usuario(
+id_usuario int primary key auto_increment not null,
+nome varchar (180),
+email varchar (200),
+cpf varchar (11) unique,
+senha varchar (180)
+);
+
+create table prod_unico(
+id_prodU int primary key auto_increment,
+dataEntradaU DATE,
+materialU varchar (180),
+unidadeU varchar (180),
+quantidadeU int,
+categoriaU varchar (200)
+);
+
+create table prod_retornavel(
+id_prodR int primary key auto_increment,
+dataEntradaR DATE,
+materialR varchar (180),
+unidadeR varchar (180),
+quantidadeR int,
+categoriaR varchar (200)
+);
+
+create table chave(
+id_chave int primary key auto_increment,
+sala varchar (180),
+pessoaRetirada varchar (180),
+dataRetirada DATE,
+estado varchar (180),
+pessoaResponsavel varchar (180)
+);
+
+CREATE TABLE prodU_baixa (
+    id_baixa INT AUTO_INCREMENT PRIMARY KEY,
+    id_prodU INT NOT NULL,
+    materialU VARCHAR(100) NOT NULL,
+    quantidade_baixa INT NOT NULL,
+    data_baixa TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_prodU) REFERENCES prod_unico (id_prodU)
+    );
+
+------------------------------------------------------
+
+create table devolucao(
+id_devolucao int primary key auto_increment,
+dataDevolucao DATE,
+itemDevolucao varchar (180),
+unidadeDevolucao varchar (180),
+qntdDevolucao int,
+categoriaDevolucao varchar (200), 
+motivoDevolucao varchar (200)
+);
+
+
+
+    
+
+DELETE FROM usuario
+ WHERE id_usuario = 1;
+ show tables from usuario;
+DESCRIBE estoque.usuario;
+drop table itens_retirados;
